@@ -30,7 +30,7 @@ public class MemoAdapter extends ArrayAdapter<Memo> {
         TextView titleText = (TextView) convertView.findViewById(R.id.titleText);
         TextView contentText = (TextView) convertView.findViewById(R.id.contentText);
 
-        titleText.setText(memo.word1);
+        titleText.setText(memo.title);
         contentText.setText(memo.content);
 
         return convertView;
