@@ -22,13 +22,28 @@ class Translation2Activity : AppCompatActivity() {
 
 
 
+
         backButton.setOnClickListener{
             finish()
         }
 
+        //DataShow()
+
     }
 
-    
+    fun DataShow(){
+        val memo = realm.where(Memo::class.java).equalTo(
+            "updateDate",
+            intent.getStringExtra("updateDate")
+        ).findFirst()
+
+        textView1.setText(memo.updateDate)
+
+
+    }
+
+
+
 
     override fun onDestroy() {
         super.onDestroy()
