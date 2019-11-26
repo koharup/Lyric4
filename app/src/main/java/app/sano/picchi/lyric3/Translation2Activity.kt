@@ -27,7 +27,7 @@ class Translation2Activity : AppCompatActivity() {
             finish()
         }
 
-        //DataShow()
+        DataShow()
 
     }
 

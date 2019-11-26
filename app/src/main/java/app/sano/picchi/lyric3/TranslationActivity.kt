@@ -3,7 +3,9 @@ package app.sano.picchi.lyric3
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import android.widget.TextView
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_add.*
@@ -30,7 +32,7 @@ class TranslationActivity : AppCompatActivity() {
     fun showData() {
         val memo = realm.where(Memo::class.java).equalTo(
             "updateDate",
-            this.intent.getStringExtra("updateDate")
+            intent.getStringExtra("updateDate")
         ).findFirst()
 
         titleText.setText(memo.title)
@@ -43,16 +45,28 @@ class TranslationActivity : AppCompatActivity() {
 
 
     fun ChangeActivity(v: View) {
-        val intent = Intent(this, Translation2Activity::class.java)
-        startActivity(intent)
+            //val memo = parent.getItemAtPosition(position) as Memo
+            val intent = Intent(this@TranslationActivity, Translation2Activity::class.java)
+            //intent.putExtra("updateDate", memo.updateDate)
+            startActivity(intent)
+
     }
 
     fun ChangeWritteActivity(v: View){
-        val intent = Intent(this,DetailActivity::class.java)
-        startActivity(intent)
+
+            //val memo = parent.getItemAtPosition(position) as Memo
+            val intent = Intent(this@TranslationActivity, DetailActivity::class.java)
+            //intent.putExtra("updateDate", memo.updateDate)
+            startActivity(intent)
     }
 
     override fun onDestroy() {
+        Log.d("title", titleText.text.toString())
+        Log.d("updateDate", updateText.text.toString())
+        Log.d("content", contentText.text.toString())
+        Log.d("word", kashiText.text.toString())
+        Log.d("word2", kashi2Text.text.toString())
+
         super.onDestroy()
 
         //realmを閉じる

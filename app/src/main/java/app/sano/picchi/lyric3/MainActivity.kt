@@ -66,10 +66,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun ChangeWritteActivity(view: View) {
-        val intent = Intent(this, DetailActivity::class.java)
-        startActivity(intent)
-    }
 
     override fun onDestroy() {
         super.onDestroy()

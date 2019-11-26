@@ -56,7 +56,7 @@ class AddActivity : AppCompatActivity() {
 
         //日付を取得
         val date = Date()
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.JAPANESE)
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.JAPANESE)
         val updateDate = sdf.format(date)
 
         //内容の取得

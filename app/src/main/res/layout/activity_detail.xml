@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#74B4A4"
-            android:onClick="create"
+            android:onClick="update"
             android:text="更新"
             android:textColor="@android:color/background_light" />
 
