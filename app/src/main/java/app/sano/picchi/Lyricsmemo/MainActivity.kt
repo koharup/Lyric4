@@ -1,13 +1,14 @@
-package app.sano.picchi.lyric3
+package app.sano.picchi.Lyricsmemo
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
-import android.widget.EditText
 import android.widget.ListView
 import io.realm.Realm
+import kotlinx.android.synthetic.main.activity_translation.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,10 +35,16 @@ class MainActivity : AppCompatActivity() {
         //詳細に画面遷移
         listView.onItemClickListener =
                 AdapterView.OnItemClickListener { parent, view, position, id ->
+                    //リストのposition番目のmemoの情報を取ってくる
                     val memo = parent.getItemAtPosition(position) as Memo
+                    //画面遷移
                     val intent = Intent(this@MainActivity, TranslationActivity::class.java)
                     intent.putExtra("updateDate", memo.updateDate)
                     startActivity(intent)
+
+                    //position(何番目)をチェックする
+                    Log.d("position", position.toString())
+
                 }
 
 

@@ -1,4 +1,4 @@
-package app.sano.picchi.lyric3;
+package app.sano.picchi.Lyricsmemo;
 
 import io.realm.RealmObject;
 

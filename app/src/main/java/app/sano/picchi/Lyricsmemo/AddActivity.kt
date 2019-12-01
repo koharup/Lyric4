@@ -1,4 +1,4 @@
-package app.sano.picchi.lyric3
+package app.sano.picchi.Lyricsmemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,20 +1,24 @@
-package app.sano.picchi.lyric3
+package app.sano.picchi.Lyricsmemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import io.realm.Realm
-import kotlinx.android.synthetic.main.activity_translation.*
-import kotlinx.android.synthetic.main.activity_translation.contentText
-import kotlinx.android.synthetic.main.activity_translation.titleText
-import kotlinx.android.synthetic.main.layout_item_memo.*
 
 class DetailActivity : AppCompatActivity() {
 
     //realm型の変数を宣言
-    lateinit var realm: Realm
+    //realm型の変数を宣言
+    val realm: Realm by lazy {
+        Realm.init(this)
+        Realm.getDefaultInstance()
+    }
+    val memo by lazy { realm.where(Memo::class.java).equalTo(
+        "updateDate",
+        intent.getStringExtra("updateDate")
+    ).findFirst() }
+
 
     //EditText型の変数宣言
     lateinit var titleEditText: EditText
@@ -26,9 +30,6 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        //realmを開く
-        Realm.init(this)
-        realm = Realm.getDefaultInstance()
 
         //関連付け
         titleEditText = findViewById(R.id.titleEditText) as EditText
@@ -36,7 +37,7 @@ class DetailActivity : AppCompatActivity() {
         word1EditText = findViewById(R.id.word1EditText) as EditText
         word2EditText = findViewById(R.id.word2EditText) as EditText
 
-        //showData()
+        showData()
 
 
     }
@@ -49,11 +50,10 @@ class DetailActivity : AppCompatActivity() {
             this.intent.getStringExtra("updateDate")
         ).findFirst()
 
-        titleText.setText(memo.title)
-        contentText.setText(memo.content)
-        updateText.setText(memo.updateDate)
-        kashiText.setText(memo.word1)
-        kashi2Text.setText(memo.word2)
+        titleEditText.setText(memo.title)
+        contentEditText.setText(memo.content)
+        word1EditText.setText(memo.word1)
+        word2EditText.setText(memo.word2)
 
     }
 
@@ -66,11 +66,16 @@ class DetailActivity : AppCompatActivity() {
         ).findFirst()
 
         //更新する
+        //なんでtitleText入れてないのに題名まで変更されてるのかわかんないけどできてる
         realm.executeTransaction {
-            memo.title = titleText.text.toString()
-            memo.content = contentText.text.toString()
-            memo.word1 = kashiText.text.toString()
-            memo.word2 = kashi2Text.text.toString()
+            //memo.title = titleText.text.toString()
+            memo.title = titleEditText.text.toString()
+            //memo.content = contentText.text.toString()
+            memo.content = contentEditText.text.toString()
+            //memo.word1 = kashiText.text.toString()
+            memo.word1 = word1EditText.text.toString()
+            memo.word2 = word2EditText.text.toString()
+            //memo.word2 = kashi2Text.text.toString()
         }
 
         //画面を閉じる

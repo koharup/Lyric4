@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/lyric_b_m">
+    android:background="@drawable/lyric_b">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +36,8 @@
             android:ems="10"
             android:gravity="top"
             android:hint="歌詞1"
-            android:inputType="textPersonName"
+            android:lines="80"
+            android:inputType="textMultiLine"
             android:textColor="@android:color/background_light" />
 
         <EditText
@@ -47,7 +48,8 @@
             android:ems="10"
             android:gravity="top"
             android:hint="歌詞2"
-            android:inputType="textPersonName"
+            android:lines="80"
+            android:inputType="textMultiLine"
             android:textColor="@android:color/background_light" />
 
 
